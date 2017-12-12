@@ -24,8 +24,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: './src/index.ts',
+	externals : {
+		paypal: 'paypal'
+	},
 	devtool: 'inline-source-map',
 	output: {
+		chunkFilename: "[name].bundle.js",
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'dist')
 	},
@@ -55,5 +59,8 @@ module.exports = {
 		]
 	},
 
-	plugins: [new UglifyJSPlugin(), new ExtractTextPlugin('style.css')]
+	plugins: [new UglifyJSPlugin(), new ExtractTextPlugin('style.css')],
+	resolve: {
+		extensions: ['.ts', '.js', '.json']
+	}
 };

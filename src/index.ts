@@ -1,2 +1,11 @@
-let script = document.currentScript || document.getElementById("paypal-sfcc-client");
-console.log("Script is", script);
+import { getCurrentScript } from "./util";
+
+const script: any = getCurrentScript();
+
+if (script["data-mini-cart"]) {
+    import(/* webpackChunkName: "minicart" */ "./minicart")
+        .then(mcart => {
+            
+        })
+        .catch(error => "An error occurred while loading the minicart component");
+}
