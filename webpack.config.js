@@ -32,7 +32,9 @@ module.exports = {
 		chunkFilename: "[name].bundle.js",
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'dist'),
-		publicPath: "//rawgit.com/trainerbill/paypal-sfcc-client/master/dist/"
+		publicPath: "//rawgit.com/trainerbill/paypal-sfcc-client/master/dist/",
+		libraryTarget: "umd",
+		library: "SFCCPayPal"
 	},
 
 	module: {
