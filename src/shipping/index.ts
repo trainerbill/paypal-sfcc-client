@@ -12,6 +12,7 @@ export default class Shipping {
     private paypalData: any;
 
     constructor() {
+        console.info("Shipping Initialize");
         this.paypalData = cookie.get("paypal-payment");
         
         this.populateFields();
