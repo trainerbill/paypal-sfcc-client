@@ -31,9 +31,9 @@ export default class Shipping {
     }
 
     map(dwid: string) {
-        if ( dwid === Shipping.form.firstName) {
+        if ( dwid === "firstName") {
             return this.paypalData.payer.payer_info.first_name;
-        } else if (dwid === Shipping.form.lastName) {
+        } else if (dwid === "lastName") {
             return this.paypalData.payer.payer_info.last_name;
         }
     }
