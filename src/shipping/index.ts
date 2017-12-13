@@ -13,7 +13,8 @@ export default class Shipping {
 
     constructor() {
         console.info("Shipping Initialize");
-        this.paypalData = cookie.get("paypal-payment");
+        const data = cookie.get("paypal-payment");
+        this.paypalData = JSON.parse(data || "");
         
         this.populateFields();
 
