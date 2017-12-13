@@ -6,7 +6,7 @@ export default class SFCCPayPal {
     private script: any = getCurrentScript();
     private url: any = getUrl();
 
-    constructor(config: any) {
+    constructor(config: any = {}) {
 
         if (this.script["data-mini-cart"] !== null) {
             console.info("Importing MiniCart");
