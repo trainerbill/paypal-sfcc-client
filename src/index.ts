@@ -1,6 +1,7 @@
 import { getCurrentScript, getUrl } from "./util";
 import Shipping from "./shipping";
 import Checkout from "./checkout";
+import Billing from "./billing";
 
 export interface IConfiguration {
     minicart: {
@@ -36,10 +37,12 @@ export default class SFCCPayPal {
         const page = this.url.pathname.split("/").pop();
         console.info("Page", page);
         
-        if (page === "shipping") {
+        if (page === Shipping.page) {
             new Shipping();
-        } else if (page === "checkout") {
+        } else if (page === Checkout.page) {
             new Checkout();
+        } else if (page === Billing.page) {
+            new Billing();
         }
 
     }

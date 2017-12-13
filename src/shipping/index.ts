@@ -74,28 +74,5 @@ export default class Shipping {
             } 
         });
     }
-    /*
-    map(dwid: string) {
-        if ( dwid === "firstName") {
-            return this.paypalData.payer.payer_info.first_name;
-        } else if (dwid === "lastName") {
-            return this.paypalData.payer.payer_info.last_name;
-        } else if (dwid === "line1") {
-            return this.paypalData.payer.payer_info.shipping_address.line1;
-        } else if (dwid === "line2") {
-            return this.paypalData.payer.payer_info.shipping_address.line2;
-        } else if (dwid === "city") {
-            return this.paypalData.payer.payer_info.shipping_address.city;
-        } else if (dwid === "state") {
-            return this.paypalData.payer.payer_info.shipping_address.state;
-        } else if (dwid === "zip") {
-            return this.paypalData.payer.payer_info.shipping_address.postal_code;
-        } else if (dwid === "country") {
-            return this.paypalData.payer.payer_info.shipping_address.country_code.toLowerCase();
-        } else if (dwid === "phone") {
-            return this.paypalData.payer.payer_info.phone;
-        }
-    }
-    */
 
 }
