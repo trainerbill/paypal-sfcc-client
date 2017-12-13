@@ -68,7 +68,7 @@ export default class Shipping {
             if (ele) {
                 const value = get(this.paypalData, data.pp);
                 if (value) {
-                    (ele as HTMLInputElement).disabled = true;
+                    (ele as HTMLInputElement).readOnly = true;
                     (ele as HTMLInputElement).value = value;
                 }
             } 

@@ -68,7 +68,7 @@ export default class Billing {
             // (document.getElementById("dwfrm_billing_paymentMethods_selectedPaymentMethodID") as HTMLInputElement)!.value = "PAYPAL_NEW";
             
             document.getElementsByName("dwfrm_billing_paymentMethods_selectedPaymentMethodID").forEach((ele) => {
-                (ele as HTMLInputElement).disabled = true;
+                (ele as HTMLInputElement).readOnly = true;
             });
 
             document.getElementsByClassName("payment-method-expanded")[0].innerHTML = PayPalLogo;
