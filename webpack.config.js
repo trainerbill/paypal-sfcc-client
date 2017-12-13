@@ -60,7 +60,12 @@ module.exports = {
 		]
 	},
 
-	plugins: [new UglifyJSPlugin(), new ExtractTextPlugin('style.css')],
+	plugins: [
+		new UglifyJSPlugin(),
+		new ExtractTextPlugin('style.css'),
+		new webpack.ProvidePlugin({
+			Promise: 'es6-promise-promise',
+		})],
 	resolve: {
 		extensions: ['.ts', '.js', '.json']
 	}
