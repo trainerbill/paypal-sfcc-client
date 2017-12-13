@@ -1,4 +1,5 @@
 import * as paypal from "paypal";
+import * as cookie from "js-cookie";
 
 export class MiniCart {
 
@@ -8,7 +9,7 @@ export class MiniCart {
     private container: HTMLElement;
 
     constructor() {
-        this.container = document.createElement("div");
+        this.container = document.createElement("span");
         this.container.id = MiniCart.paypalContainer;
         document.getElementsByClassName(MiniCart.selector)[0].appendChild(this.container);
 
@@ -30,7 +31,8 @@ export class MiniCart {
                 });
             },
             onAuthorize: function(data: any, actions: any) {
-                actions.redirect("checkout");
+                cookie.set("cart-data", data);
+                actions.redirect("checkout?paypalfromcart=true");
             }
 
         }, '#mini-cart-slot-paypal');

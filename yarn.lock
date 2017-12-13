@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/js-cookie@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.1.0.tgz#a8916246aa994db646c66d54c854916213300a51"
+
 "@types/url-parse@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@types/url-parse/-/url-parse-1.1.0.tgz#61f8e1b52024d07fceb73fd7f8292e5ddd2b60a1"
@@ -1869,6 +1873,10 @@ isstream@~0.1.2:
 js-base64@^2.1.9:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.0.tgz#9e566fee624751a1d720c966cd6226d29d4025aa"
+
+js-cookie@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.0.tgz#1b2c279a6eece380a12168b92485265b35b1effb"
 
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
