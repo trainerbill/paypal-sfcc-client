@@ -1,16 +1,28 @@
 import { getCurrentScript, getUrl } from "./util";
 import Shipping from "./shipping";
 
-export default class SFCCPayPal {
+export interface IConfiguration {
+    minicart: {
+        enabled: boolean,
+    }
+}
 
+export default class SFCCPayPal {
+    static defaultConfig: IConfiguration = {
+        minicart: {
+            enabled: true,
+        }
+    }
     static shipping = Shipping;
 
+    private config: IConfiguration;
     private script: any = getCurrentScript();
     private url: any = getUrl();
 
-    constructor(config: any = {}) {
+    constructor(config: Partial<IConfiguration>) {
+        this.config = { ...SFCCPayPal.defaultConfig, ...config };
 
-        if (this.script["data-mini-cart"] !== null) {
+        if (this.config.minicart.enabled) {
             console.info("Importing MiniCart");
             import(/* webpackChunkName: "minicart" */ "./minicart")
                 .then(mcart => {
