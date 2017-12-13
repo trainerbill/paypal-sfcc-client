@@ -23,6 +23,7 @@ export default class Shipping {
         for (const id in Shipping.form) {
             const ele = document.getElementById(id);
             if (ele) {
+                (ele as HTMLInputElement).disabled = true;
                 (ele as HTMLInputElement).value = this.map(id);
             } 
         }
