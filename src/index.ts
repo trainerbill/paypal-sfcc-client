@@ -3,6 +3,8 @@ import Shipping from "./shipping";
 
 export default class SFCCPayPal {
 
+    static shipping = Shipping;
+
     private script: any = getCurrentScript();
     private url: any = getUrl();
 
