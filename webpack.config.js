@@ -23,11 +23,11 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+	devtool: 'inline-source-map',
 	entry: './src/index.ts',
 	externals : {
 		paypal: 'paypal'
 	},
-	devtool: 'inline-source-map',
 	output: {
 		chunkFilename: "[name].bundle.js",
 		filename: '[name].bundle.js',
@@ -36,7 +36,6 @@ module.exports = {
 		libraryTarget: "umd",
 		library: "SFCCPayPal"
 	},
-
 	module: {
 		rules: [
 			{
@@ -63,7 +62,7 @@ module.exports = {
 	},
 
 	plugins: [
-		new UglifyJSPlugin(),
+		// new UglifyJSPlugin(),
 		new ExtractTextPlugin('style.css'),
 		new webpack.ProvidePlugin({
 			Promise: 'es6-promise-promise',

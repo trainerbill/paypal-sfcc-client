@@ -1,13 +1,12 @@
 {
     "compilerOptions": {
-      "declaration": true,
-      // "outDir": "./dist/",
+      "outDir": "./dist/",
       "noImplicitAny": true,
       "module": "esnext",
       "moduleResolution": "node",
       "strict": true,
       "target": "es5",
-      // "allowJs": true,
+      "allowJs": true,
       "sourceMap": true,
       "lib": ["dom", "es5", "es2015.promise", "es6"]
     }
