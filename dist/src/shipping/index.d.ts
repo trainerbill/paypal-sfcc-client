@@ -9,6 +9,7 @@ export default class Shipping {
         state: string;
         zip: string;
         country: string;
+        phone: string;
     };
     private paypalData;
     constructor();
