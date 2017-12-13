@@ -1,6 +1,7 @@
 import { getUrl } from "../util";
 import * as cookie from "js-cookie";
 import { get, set } from "lodash";
+import PayPalLogo from "./logo.html";
 
 export default class Billing {
 
@@ -62,6 +63,18 @@ export default class Billing {
             
             
             this.populateFields();
+
+            const pp = document.getElementById("is-PayPal");
+            pp ? (pp as HTMLInputElement).checked = true : undefined;
+            
+            document.getElementsByName("dwfrm_billing_paymentMethods_selectedPaymentMethodID").forEach((ele) => {
+                (ele as HTMLInputElement).disabled = true;
+            });
+
+            const logo = document.createElement("div");
+            logo.innerHTML = PayPalLogo;
+            document.getElementsByClassName("payment-method-options")[0].appendChild(logo);
+            
         }
 
     }

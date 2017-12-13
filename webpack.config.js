@@ -57,7 +57,12 @@ module.exports = {
 					],
 					fallback: 'style-loader'
 				})
-			}
+			},
+			{
+                test: /\.html$/,
+                exclude: /node_modules/,
+                loader: "html-loader?exportAsEs6Default"
+            }
 		]
 	},
 
