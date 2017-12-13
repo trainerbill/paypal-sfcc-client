@@ -64,8 +64,8 @@ export default class Billing {
             
             this.populateFields();
 
-            const pp = document.getElementById("is-PayPal");
-            pp ? (pp as HTMLInputElement).checked = true : undefined;
+            (document.getElementById("is-PayPal") as HTMLInputElement)!.checked = true;
+            (document.getElementById("dwfrm_billing_paymentMethods_selectedPaymentMethodID") as HTMLInputElement)!.value = "PAYPAL_NEW";
             
             document.getElementsByName("dwfrm_billing_paymentMethods_selectedPaymentMethodID").forEach((ele) => {
                 (ele as HTMLInputElement).disabled = true;
