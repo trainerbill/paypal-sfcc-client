@@ -53,7 +53,8 @@ export default class Shipping {
             this.paypalData = JSON.parse(data || "");
             // Lower case the country
             if (Shipping.form.get("country")) {
-                get(this.paypalData, (Shipping.form.get("country") as any).pp).toLowerCase();
+                let country = get(this.paypalData, (Shipping.form.get("country") as any).pp);
+                country = country.toLowerCase();
             }
             
             this.populateFields();
