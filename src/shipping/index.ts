@@ -1,6 +1,6 @@
 import { getUrl } from "../util";
 import * as cookie from "js-cookie";
-import { get } from "lodash";
+import { get, set } from "lodash";
 
 export default class Shipping {
 
@@ -51,11 +51,11 @@ export default class Shipping {
         const data = cookie.get("paypal-payment");
         if (data) {
             this.paypalData = JSON.parse(data || "");
-            // Lower case the country
-            if (Shipping.form.get("country")) {
-                let country = get(this.paypalData, (Shipping.form.get("country") as any).pp);
-                country = country.toLowerCase();
-            }
+            
+            // Lowercase country
+            const country = get(this.paypalData, (Shipping.form.get("country") as any).pp);
+            set(this.paypalData, (Shipping.form.get("country") as any).pp, country.toLowerCase());
+            
             
             this.populateFields();
         }
