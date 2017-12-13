@@ -31,7 +31,8 @@ module.exports = {
 	output: {
 		chunkFilename: "[name].bundle.js",
 		filename: '[name].bundle.js',
-		path: path.resolve(__dirname, 'dist')
+		path: path.resolve(__dirname, 'dist'),
+		publicPath: "//rawgit.com/trainerbill/paypal-sfcc-client/master/dist/"
 	},
 
 	module: {
