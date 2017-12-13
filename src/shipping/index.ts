@@ -6,7 +6,13 @@ export default class Shipping {
     static page = "shipping";
     static form = {
         firstName: "dwfrm_singleshipping_shippingAddress_addressFields_firstName",
-        lastName: "dwfrm_singleshipping_shippingAddress_addressFields_lastName"
+        lastName: "dwfrm_singleshipping_shippingAddress_addressFields_lastName",
+        line1: "dwfrm_singleshipping_shippingAddress_addressFields_address1",
+        line2: "dwfrm_singleshipping_shippingAddress_addressFields_address2",
+        city: "dwfrm_singleshipping_shippingAddress_addressFields_city",
+        state: "dwfrm_singleshipping_shippingAddress_addressFields_state",
+        zip: "dwfrm_singleshipping_shippingAddress_addressFields_country",
+        country: ""
     };
 
     private paypalData: any;
@@ -38,6 +44,18 @@ export default class Shipping {
             return this.paypalData.payer.payer_info.first_name;
         } else if (dwid === "lastName") {
             return this.paypalData.payer.payer_info.last_name;
+        } else if (dwid === "line1") {
+            return this.paypalData.payer.payer_info.shipping_address.line1;
+        } else if (dwid === "line2") {
+            return this.paypalData.payer.payer_info.shipping_address.line2;
+        } else if (dwid === "city") {
+            return this.paypalData.payer.payer_info.shipping_address.city;
+        } else if (dwid === "state") {
+            return this.paypalData.payer.payer_info.shipping_address.state;
+        } else if (dwid === "zip") {
+            return this.paypalData.payer.payer_info.shipping_address.postal_code;
+        } else if (dwid === "country") {
+            return this.paypalData.payer.payer_info.shipping_address.country_code.toLowerCase();
         }
     }
 
