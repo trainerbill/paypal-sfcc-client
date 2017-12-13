@@ -12,7 +12,10 @@ export default class Shipping {
 
     constructor() {
         this.paypalData = cookie.get("paypal-payment");
-        // document.getElementById(Shipping.form.firstName).value = this.paypalData.
+        const firstname = document.getElementById(Shipping.form.firstName);
+        if (firstname) {
+            (firstname as HTMLInputElement).value = this.paypalData.payer.payer_info.first_name;
+        }
 
     }
 
