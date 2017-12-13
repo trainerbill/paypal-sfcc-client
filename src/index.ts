@@ -1,6 +1,8 @@
-import { getCurrentScript } from "./util";
+import { getCurrentScript, getUrl } from "./util";
+import Shipping from "./shipping";
 
 const script: any = getCurrentScript();
+const url: any = getUrl();
 
 if (script["data-mini-cart"] !== null) {
     console.info("Importing MiniCart");
@@ -9,4 +11,11 @@ if (script["data-mini-cart"] !== null) {
             console.info("minicart: Imported");
         })
         .catch(error => "An error occurred while loading the minicart component");
+}
+
+const page = url.path.split(",").pop();
+console.info("Page", page);
+
+if (page === "shipping") {
+    new Shipping();
 }

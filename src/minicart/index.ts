@@ -31,8 +31,10 @@ export class MiniCart {
                 });
             },
             onAuthorize: function(data: any, actions: any) {
-                cookie.set("cart-data", data);
-                window.location.href = "checkout?paypalfromcart=true";
+                actions.payment.get().then((payment: any) => {
+                    cookie.set("paypal-payment", payment);
+                    window.location.href = "checkout?paypalfromcart=true";
+                });
             }
 
         }, '#mini-cart-slot-paypal');
