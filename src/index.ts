@@ -1,5 +1,6 @@
 import { getCurrentScript, getUrl } from "./util";
 import Shipping from "./shipping";
+import Checkout from "./checkout";
 
 export interface IConfiguration {
     minicart: {
@@ -37,6 +38,8 @@ export default class SFCCPayPal {
         
         if (page === "shipping") {
             new Shipping();
+        } else if (page === "checkout") {
+            new Checkout();
         }
 
     }
