@@ -13,8 +13,11 @@ export default class Checkout {
         console.info("Checkout Initialize");
         const data = cookie.get("paypal-payment");
         this.form = <HTMLFormElement>document.getElementById(Checkout.formid);
-        this.paypalData = JSON.parse(data || "");
-        this.form.getElementsByTagName("input")[0].value = this.paypalData.payer.payer_info.email;
+        if (data) {
+            this.paypalData = JSON.parse(data || "");
+            this.form.getElementsByTagName("input")[0].value = this.paypalData.payer.payer_info.email;
+        }
+        
     }
 
 }
