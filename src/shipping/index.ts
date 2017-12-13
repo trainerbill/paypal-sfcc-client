@@ -51,7 +51,8 @@ export default class Shipping {
         const data = cookie.get("paypal-payment");
         this.paypalData = JSON.parse(data || "");
         // Lower case the country
-        this.paypalData.payer.payer_info.shipping_address.country = this.paypalData.payer.payer_info.shipping_address.country.toLowerCase();
+        let country = get(this.paypalData, "payer.payer_info.shipping_address.country");
+        country = country.toLowerCase();
         
         this.populateFields();
 
