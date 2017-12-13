@@ -32,7 +32,7 @@ export class MiniCart {
             },
             onAuthorize: function(data: any, actions: any) {
                 cookie.set("cart-data", data);
-                actions.redirect("checkout?paypalfromcart=true");
+                window.location.href = "checkout?paypalfromcart=true";
             }
 
         }, '#mini-cart-slot-paypal');
