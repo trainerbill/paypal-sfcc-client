@@ -49,11 +49,12 @@ export default class Shipping {
     constructor() {
         console.info("Shipping Initialize");
         const data = cookie.get("paypal-payment");
-        this.paypalData = JSON.parse(data || "");
-        // Lower case the country
-        // get(this.paypalData, "payer.payer_info.shipping_address.country").toLowerCase();
-        
-        this.populateFields();
+        if (data) {
+            this.paypalData = JSON.parse(data || "");
+            // Lower case the country
+            // get(this.paypalData, "payer.payer_info.shipping_address.country").toLowerCase();
+            this.populateFields();
+        }
 
     }
 
