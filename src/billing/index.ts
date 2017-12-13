@@ -72,8 +72,9 @@ export default class Billing {
             });
 
             const logo = document.createElement("div");
+            logo.className = "payment-method";
             logo.innerHTML = PayPalLogo;
-            document.getElementsByClassName("payment-method-options")[0].appendChild(logo);
+            document.getElementsByClassName("payment-method-options")[0].parentNode!.appendChild(logo);
 
             (document.getElementById("paypal-logo-email") as HTMLElement).innerHTML = get(this.paypalData, (Billing.form.get("email") as any).pp);
             
