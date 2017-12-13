@@ -1,20 +1,48 @@
 import { getUrl } from "../util";
 import * as cookie from "js-cookie";
+import { get } from "lodash";
 
 export default class Shipping {
 
     static page = "shipping";
-    static form = {
-        firstName: "dwfrm_singleshipping_shippingAddress_addressFields_firstName",
-        lastName: "dwfrm_singleshipping_shippingAddress_addressFields_lastName",
-        line1: "dwfrm_singleshipping_shippingAddress_addressFields_address1",
-        line2: "dwfrm_singleshipping_shippingAddress_addressFields_address2",
-        city: "dwfrm_singleshipping_shippingAddress_addressFields_city",
-        state: "dwfrm_singleshipping_shippingAddress_addressFields_states_state",
-        zip: "dwfrm_singleshipping_shippingAddress_addressFields_postal",
-        country: "dwfrm_singleshipping_shippingAddress_addressFields_country",
-        phone: "dwfrm_singleshipping_shippingAddress_addressFields_phone"
-    };
+    static form = new Map([
+        ['firstName', {
+            dw: "dwfrm_singleshipping_shippingAddress_addressFields_firstName",
+            pp: "payer.payer_info.first_name",
+        }],
+        ['lastName', {
+            dw: "dwfrm_singleshipping_shippingAddress_addressFields_lastName",
+            pp: "payer.payer_info.last_name",
+        }],
+        ['line1', {
+            dw: "dwfrm_singleshipping_shippingAddress_addressFields_address1",
+            pp: "payer.payer_info.shipping_address.line1",
+        }],
+        ['line2', {
+            dw: "dwfrm_singleshipping_shippingAddress_addressFields_address2",
+            pp: "payer.payer_info.shipping_address.line2",
+        }],
+        ['city', {
+            dw: "dwfrm_singleshipping_shippingAddress_addressFields_city",
+            pp: "payer.payer_info.shipping_address.city",
+        }],
+        ['state', {
+            dw: "dwfrm_singleshipping_shippingAddress_addressFields_states_state",
+            pp: "payer.payer_info.shipping_address.state",
+        }],
+        ['zip', {
+            dw: "dwfrm_singleshipping_shippingAddress_addressFields_postal",
+            pp: "payer.payer_info.shipping_address.postal_code",
+        }],
+        ['country', {
+            dw: "dwfrm_singleshipping_shippingAddress_addressFields_country",
+            pp: "payer.payer_info.shipping_address.country_code",
+        }],
+        ['phone', {
+            dw: "dwfrm_singleshipping_shippingAddress_addressFields_phone",
+            pp: "payer.payer_info.phone",
+        }],
+    ]);
 
     private paypalData: any;
 
@@ -22,24 +50,26 @@ export default class Shipping {
         console.info("Shipping Initialize");
         const data = cookie.get("paypal-payment");
         this.paypalData = JSON.parse(data || "");
+        // Lower case the country
+        this.paypalData.payer.payer_info.shipping_address.country = this.paypalData.payer.payer_info.shipping_address.country.toLowerCase();
         
         this.populateFields();
 
     }
 
     private populateFields() {
-        for (const id in Shipping.form) {
-            const ele = document.getElementById((Shipping.form as any)[id]);
+        Shipping.form.forEach((data) => {
+            const ele = document.getElementById(data.dw);
             if (ele) {
-                const mapValue = this.map(id);
-                if (mapValue) {
+                const value = get(this.paypalData, data.pp);
+                if (value) {
                     (ele as HTMLInputElement).disabled = true;
-                    (ele as HTMLInputElement).value = mapValue;
+                    (ele as HTMLInputElement).value = value;
                 }
             } 
-        }
+        });
     }
-
+    /*
     map(dwid: string) {
         if ( dwid === "firstName") {
             return this.paypalData.payer.payer_info.first_name;
@@ -61,5 +91,6 @@ export default class Shipping {
             return this.paypalData.payer.payer_info.phone;
         }
     }
+    */
 
 }
