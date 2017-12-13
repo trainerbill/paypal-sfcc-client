@@ -13,7 +13,7 @@ if (script["data-mini-cart"] !== null) {
         .catch(error => "An error occurred while loading the minicart component");
 }
 
-const page = url.pathname.split(",").pop();
+const page = url.pathname.split("/").pop();
 console.info("Page", page);
 
 if (page === "shipping") {
