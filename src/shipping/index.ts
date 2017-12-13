@@ -11,8 +11,8 @@ export default class Shipping {
         line2: "dwfrm_singleshipping_shippingAddress_addressFields_address2",
         city: "dwfrm_singleshipping_shippingAddress_addressFields_city",
         state: "dwfrm_singleshipping_shippingAddress_addressFields_state",
-        zip: "dwfrm_singleshipping_shippingAddress_addressFields_country",
-        country: ""
+        zip: "dwfrm_singleshipping_shippingAddress_addressFields_postal",
+        country: "dwfrm_singleshipping_shippingAddress_addressFields_country"
     };
 
     private paypalData: any;
