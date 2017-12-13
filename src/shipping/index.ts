@@ -22,7 +22,7 @@ export default class Shipping {
 
     private populateFields() {
         for (const id in Shipping.form) {
-            const ele = document.getElementById(id);
+            const ele = document.getElementById((Shipping.form as any)[id]);
             if (ele) {
                 (ele as HTMLInputElement).disabled = true;
                 (ele as HTMLInputElement).value = this.map(id);
