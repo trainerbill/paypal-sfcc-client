@@ -54,7 +54,7 @@ export default class SFCCPayPal {
         } else if (page === Billing.page) {
             new Billing();
         }
-        console.log("okiedokie", ShopApi);
+        console.log("okiedokie123", ShopApi);
         // Setup SFCC Client
         ShopApi.ApiClient.instance = new ShopApi.ApiClient({
             basePath: `https://${this.config.hostname}/dw/shop/v17_8`,

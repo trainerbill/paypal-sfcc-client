@@ -23,7 +23,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-	// devtool: 'inline-source-map',
+	devtool: 'inline-source-map',
 	entry: './src/index.ts',
 	externals : {
 		paypal: 'paypal'
