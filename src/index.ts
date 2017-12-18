@@ -26,6 +26,10 @@ export default class SFCCPayPal {
     private config: IConfiguration;
     private script: any = getCurrentScript();
     private url: any = getUrl();
+    private dwsid: string;
+    private dwsecuretoken: string;
+    private jwt: string;
+    private customerid: string;
 
     constructor(config: Partial<IConfiguration>) {
         this.config = { ...SFCCPayPal.defaultConfig, ...config };
@@ -50,7 +54,7 @@ export default class SFCCPayPal {
         } else if (page === Billing.page) {
             new Billing();
         }
-        console.log("testy", ShopApi);
+        console.log("okiedokie", ShopApi);
         // Setup SFCC Client
         ShopApi.ApiClient.instance = new ShopApi.ApiClient({
             basePath: `https://${this.config.hostname}/dw/shop/v17_8`,
@@ -74,6 +78,7 @@ export default class SFCCPayPal {
             .then((data: any) => {
                 // tslint:disable-next-line:no-console
                 console.log(api);
+                this.customerid = data.customer_id;
         
             })
             .catch((fault: any) => {
