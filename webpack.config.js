@@ -29,8 +29,8 @@ module.exports = {
 		paypal: 'paypal'
 	},
 	output: {
-		chunkFilename: "[name].bundle.js",
-		filename: '[name].bundle.js',
+		chunkFilename: "[name].ppsfcc.bundle.js",
+		filename: '[name].ppsfcc.bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 		publicPath: "//rawgit.com/trainerbill/paypal-sfcc-client/master/dist/",
 		libraryTarget: "umd",

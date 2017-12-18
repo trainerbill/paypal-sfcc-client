@@ -2,7 +2,7 @@ import { getCurrentScript, getUrl } from "./util";
 import Shipping from "./shipping";
 import Checkout from "./checkout";
 import Billing from "./billing";
-import * as ShopApi from "commercecloud-ocapi-client";
+import ShopApi from "commercecloud-ocapi-client";
 import * as cookie from "js-cookie";
 
 export interface IConfiguration {
@@ -50,7 +50,7 @@ export default class SFCCPayPal {
         } else if (page === Billing.page) {
             new Billing();
         }
-        console.log(ShopApi);
+        console.log("testy", ShopApi);
         // Setup SFCC Client
         ShopApi.ApiClient.instance = new ShopApi.ApiClient({
             basePath: `https://${this.config.hostname}/dw/shop/v17_8`,
