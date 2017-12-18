@@ -39,6 +39,11 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				parser: {
+				  amd: false
+				}
+			},
+			{
 				test: /\.tsx?$/,
 				use: 'ts-loader',
 				exclude: /node_modules/
