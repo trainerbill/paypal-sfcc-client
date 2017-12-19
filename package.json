@@ -10,7 +10,8 @@
     "js-cookie": "^2.2.0",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",
-    "url-parse": "^1.2.0"
+    "url-parse": "^1.2.0",
+    "webpack-dev-server": "^2.9.7"
   },
   "devDependencies": {
     "css-loader": "^0.28.7",
@@ -24,7 +25,8 @@
   },
   "scripts": {
     "build": "webpack",
-    "release:quick": "yarn build && git add -A && git commit -m 'Quick Release' && git push"
+    "release:quick": "yarn build && git add -A && git commit -m 'Quick Release' && git push",
+    "start:dev": "webpack-dev-server"
   },
   "typings": "dist/src/index.d.ts"
 }

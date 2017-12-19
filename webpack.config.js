@@ -32,7 +32,7 @@ module.exports = {
 		chunkFilename: "[name].ppsfcc.bundle.js",
 		filename: '[name].ppsfcc.bundle.js',
 		path: path.resolve(__dirname, 'dist'),
-		publicPath: "//rawgit.com/trainerbill/paypal-sfcc-client/master/dist/",
+		publicPath: process.env.NODE_ENV == "development" ? "http://localhost:8080/dist/" : "//rawgit.com/trainerbill/paypal-sfcc-client/master/dist/",
 		libraryTarget: "umd",
 		library: "SFCCPayPal"
 	},
