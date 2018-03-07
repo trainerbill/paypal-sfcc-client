@@ -26,7 +26,8 @@ module.exports = {
 	devtool: 'inline-source-map',
 	entry: './src/index.ts',
 	externals : {
-		paypal: 'paypal'
+		paypal: 'paypal',
+		jquery: 'jQuery',
 	},
 	output: {
 		chunkFilename: "[name].ppsfcc.bundle.js",

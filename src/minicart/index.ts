@@ -3,16 +3,44 @@ import * as cookie from "js-cookie";
 
 export class MiniCart {
 
-    static selector = "mini-cart-slot";
-    static paypalContainer = "mini-cart-slot-paypal";
+    static bagSelector = "div.mini-cart";
+    static selector = "div.mini-cart";
+    static paypalContainer = "#mini-cart-paypal";
 
     private container: HTMLElement;
 
     constructor() {
-        this.container = document.createElement("span");
-        this.container.id = MiniCart.paypalContainer;
-        document.getElementsByClassName(MiniCart.selector)[0].appendChild(this.container);
+        console.info("Minicart constructor");
+        
+        
+        
+    }
 
+    private waitForDom() {
+        let i = 0;
+        const timer = setInterval(() => {
+            console.info("waiting for DOM");
+            if (i > 60) {
+                this.stopTimer(timer);
+            }
+            const ele = document.querySelector(MiniCart.selector);
+            if (ele) {
+                console.info("Appending to", ele);
+                ele.appendChild(this.container);
+                this.stopTimer(timer);
+            }
+            i++;
+        }, 10);
+    }
+
+    private stopTimer(timer: any) {
+        clearInterval(timer);
+    }
+
+    private createButton() {
+        this.container = document.createElement("div");
+        this.container.className = "popover-bottom";
+        
         paypal.Button.render({
             
             env: 'sandbox',
@@ -37,7 +65,7 @@ export class MiniCart {
                 });
             }
 
-        }, '#mini-cart-slot-paypal');
+        }, this.container);
     }
 
 }
